@@ -1,20 +1,26 @@
+ /*
+  * Modulo que define as funcoes referente a importacao do arquivo
+  */
+
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
 
  #include "importacao.h"
 
+ FILE *arquivo_registro;
+
 /*
  * Função para importar arquivo de registros
  * Abre se o arquivo ja existir, cria caso contrario
  *
- * parametros: nome do arquivo alvo
+ * @param
+ * nome_arquivo: nome do arquivo alvo a ser criado
+ * este sera o nome para o arquivo de regitros
  */
-
  void ImportarArquivoRegistro(char *nome_arquivo)
  {
  	FILE *arquivo_fonte = fopen("dados-inline.txt", "r");
- 	extern FILE *arquivo_registro;
 	char buffer_registro[TAM_MAX];
 	short tamanho = -1;
 
@@ -39,11 +45,18 @@
  }
 
  /*
-  * Função que recebe um arquivo de dados e copia o atual campo referenciado
+  * Função auxiliar para a leitura do arquivo de entrada dados-inline
+  * Realiza copia de um registro a ser copiado
+  * Atraves da contagem de campos
   *
-  * parametros: arquivo alvo, buffer destino
+  * @param
+  * arquivo_origem: arquivo alvo para copia do registros
+  * buffer_destino: buffer para a copia do registro
+  *
+  * @returns
+  * retorna 0 caso o arquivo tenha chegado ao final
+  * retorna 1 caso caso ainda nao tenha terminado
   */
-
   int CopiaRegistro(FILE *arquivo_origem, char *buffer_destino)
   {
   	char atual_char;
@@ -63,15 +76,16 @@
   }
 
   /*
-   * Funcao para imprimir arquivo
-   * parametros: nome do arquivo
+   * Funcao para imprimir todos os registros do arquivo de registros
+   *
+   * @param
+   * arquivo_alvo: nome do arquivo que desaja-se visualizar
+   *
    */
-
   void ExibirArquivo(char *arquivo_alvo)
   {
   	FILE *fd = fopen(arquivo_alvo, "r");
 	char read_buffer[TAM_MAX] = {[0 ... (TAM_MAX-1)] = '\0'};
-  	char atual_char;
 	short tam;
 
 	fread(&tam, sizeof(short), 1, fd);
@@ -85,4 +99,4 @@
 		memset(read_buffer,'\0',strlen(read_buffer));
 		}
 	fclose(fd);
-  }
+}

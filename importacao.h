@@ -2,7 +2,7 @@
 #define IMPORTACAO_H_
 #define TAM_MAX 512
 
-	FILE *arquivo_registro;
+	extern FILE *arquivo_registro;
 
 	void ImportarArquivoRegistro(char*);
 	void ExibirArquivo(char*);

@@ -2,7 +2,10 @@
 #define BUSCA_H_
 #include "importacao.h"
 
-	extern FILE *arquivo_registro;
+#define TRUE 1
+#define FALSE 0
+
 	int BuscaRegistro(char*);
+	void ImprimeRegistro(int);
 
 #endif
