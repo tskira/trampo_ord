@@ -20,8 +20,12 @@
 		char *campo;
 		short tam;
 		char atual_char;
-
-		if (byte_offset == -1) printf("\nRegistro nao encontrado");
+		if (byte_offset == -1)
+		{
+			printf("\n ####################################### \n");
+			printf("\n ####### REGISTRO NAO EXISTENTE ######## \n");
+			printf("\n ####################################### \n");
+		}
 		else
 		{
 			arquivo_registro = fopen(OUTPUT_FILE, "r");
@@ -36,7 +40,7 @@
 			campo = strtok(NULL, "|");
 			printf("\n CURSO: %s", campo);
 			campo = strtok(NULL, "|");
-			printf("\n PONTUACAO: %s", campo);
+			printf("\n SCORE: %s", campo);
 			fclose(arquivo_registro);
 			printf("\n");
 			printf("\n ######################### \n");

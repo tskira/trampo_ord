@@ -4,7 +4,6 @@
 #define OUTPUT_FILE "arquivo_final"
 
 	extern FILE *arquivo_registro;
-
 	void ImportarArquivoRegistro(char*);
 	int CopiaRegistro(FILE*, char*);
 
