@@ -74,29 +74,3 @@
 	strcpy(buffer_destino, buffer_auxiliar);
 	return 1;
   }
-
-  /*
-   * Funcao para imprimir todos os registros do arquivo de registros
-   *
-   * @param
-   * arquivo_alvo: nome do arquivo que desaja-se visualizar
-   *
-   */
-  void ExibirArquivo(char *arquivo_alvo)
-  {
-  	FILE *fd = fopen(arquivo_alvo, "r");
-	char read_buffer[TAM_MAX] = {[0 ... (TAM_MAX-1)] = '\0'};
-	short tam;
-
-	fread(&tam, sizeof(short), 1, fd);
-	printf("\nLED: %d", tam);
-
-	while(fread(&tam, sizeof(short), 1, fd))
-		{
-		printf("\ntamanho: %d ", tam);
-		fread(read_buffer, tam , 1, fd);
-		printf("\n %s\n", read_buffer);
-		memset(read_buffer,'\0',strlen(read_buffer));
-		}
-	fclose(fd);
-}

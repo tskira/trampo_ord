@@ -25,11 +25,12 @@
 		char aux_buffer[TAM_MAX] = {[0 ... (TAM_MAX-1)] = '\0'};
 		char *inscricao;
 		short tam = 0;
-		int byte_offset = 2;
+		int byte_offset;
 		int encontrou = FALSE;
 
 		arquivo_registro = fopen("arquivo_final", "r");
 		fread(&tam, sizeof(short), 1, arquivo_registro);
+		byte_offset = ftell(arquivo_registro);
 		while(fread(&tam, sizeof(short), 1, arquivo_registro))
 		{
 			fread(read_buffer, tam, 1, arquivo_registro);
@@ -40,8 +41,8 @@
 				encontrou = TRUE;
 				break;
 			}
-			byte_offset += tam;
 			memset(read_buffer,'\0',strlen(read_buffer));
+			byte_offset = ftell(arquivo_registro);
 		}
 		fclose(arquivo_registro);
 		if (encontrou) return(byte_offset);
