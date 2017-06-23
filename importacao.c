@@ -4,8 +4,6 @@
 
  #include "importacao.h"
 
- #define TAM_MAX 512
-
 /*
  * Função para importar arquivo de registros
  * Abre se o arquivo ja existir, cria caso contrario
@@ -36,6 +34,8 @@
 			printf("%s", buffer_registro);
 		}
 	}
+	fclose(arquivo_fonte);
+	fclose(arquivo_registro);
  }
 
  /*
@@ -84,4 +84,5 @@
 		printf("\n %s\n", read_buffer);
 		memset(read_buffer,'\0',strlen(read_buffer));
 		}
+	fclose(fd);
   }

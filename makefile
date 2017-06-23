@@ -1,2 +1,2 @@
-testemake: teste.c importacao.c
-	gcc -o testemake teste.c importacao.c
+testemake: teste.c importacao.c busca.c
+	gcc -o testemake teste.c importacao.c busca.c
