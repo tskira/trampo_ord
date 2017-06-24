@@ -11,10 +11,12 @@
 	 PrintRegistro(BuscaRegistro("113605"));
 
 	 RemoveRegistro("113605");
+	 RemoveRegistro("135220");
 
-	 PrintRegistro(BuscaRegistro("113605"));
 	 ExibirArquivo(OUTPUT_FILE);
 	 printf("\n");
 	 PrintLed();
+
+	 printf("\n%d\n", ProcuraEspaco(35));
 	 return 0;
  }

@@ -36,8 +36,10 @@
 			tamanho = (short) strlen(buffer_registro);
 			fwrite(&tamanho, sizeof(short), 1, arquivo_registro);
 			fwrite(buffer_registro, tamanho, 1, arquivo_registro);
+			/* Descomentar para visualizar a importacao
 			printf("\n%d ", tamanho);
 			printf("%s", buffer_registro);
+			*/
 		}
 	}
 	fclose(arquivo_fonte);
