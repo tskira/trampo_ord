@@ -125,6 +125,6 @@
 		fseek(arquivo_registro, -2, SEEK_CUR);
 		fwrite(&tamanho_sobra, sizeof(short), 1, arquivo_registro);
 		fclose(arquivo_registro);
-		if(tamanho_sobra <= 14) RemoveLed(offset_alvo);
+		if(tamanho_sobra <= 10) RemoveLed(offset_alvo);
 		return(offset_alvo + tamanho_sobra + 1);
 	}
