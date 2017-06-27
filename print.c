@@ -64,12 +64,12 @@
 	  printf("\nLED: %d\n", tam);
 
 	  while(fread(&tam, sizeof(short), 1, fd))
-		  {
+	  {
 		  printf("\ntamanho: %d ", tam);
 		  fread(read_buffer, tam , 1, fd);
 		  if (read_buffer[0] != '*') printf(" %s\n", read_buffer);
 		  else printf(" ### ESPAÇO DISPONIVEL ###\n");
 		  memset(read_buffer,'\0',strlen(read_buffer));
-		  }
+	  }
 	  fclose(fd);
   }
