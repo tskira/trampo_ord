@@ -30,6 +30,13 @@
 		short teste = 10;
 
 		byte_offset_alvo = BuscaRegistro(registro_alvo);
+		if(byte_offset_alvo == -1)
+		{
+			printf("\n ################################## \n");
+			printf("\n ####### REGISTRO INVALIDO ######## \n");
+			printf("\n ################################## \n");
+			return;
+		}
 		arquivo_registro = fopen(OUTPUT_FILE, "r+");
 		rewind(arquivo_registro);
 		fread(&led_head, sizeof(short), 1, arquivo_registro);
