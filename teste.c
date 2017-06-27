@@ -14,13 +14,13 @@
 	 //RemoveRegistro("135220");
 
 	 //ExibirArquivo(OUTPUT_FILE);
-	 InsereRegistro("123|THIAGOSAITO|CC|316|");
-	 RemoveRegistro("113605");
+	 //InsereRegistro("123|T|CC|316|");
 	 //PrintRegistro(BuscaRegistro("123"));
 	 //PrintRegistro(BuscaRegistro("200500"));
-	 InsereRegistro("123|THIAGOSAITO|CC|316|");
 
+	 RemoveRegistro("123");
 	 ExibirArquivo(OUTPUT_FILE);
+	 PrintLed();
 	 printf("\n");
 	 //PrintLed();
 	 return 0;

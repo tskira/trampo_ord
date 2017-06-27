@@ -59,7 +59,7 @@
 			fread(&prox, sizeof(short), 1, arquivo_registro);
 			fseek(arquivo_registro, prox, SEEK_SET);
 			fread(&espaco_livre, sizeof(short), 1, arquivo_registro);
-			if(espaco_livre - tamanho >= 14) break;
+			if(espaco_livre >= tamanho) break;
 			fseek(arquivo_registro, 2, SEEK_CUR);
 		}
 
@@ -103,6 +103,8 @@
 	 * verifica o espaco disponivel e o tamanho do novo registro
 	 * atualiza o novo campo gerado, arrumando sua posicao e inserindo-o na led
 	 * devolve a byte offset onde o novo registro deve ser inserido
+	 * Caso a sobra seja menor ou igual a 14, sera gerada fragmantacao
+	 * O espaco resultante sai da led
 	 *
 	 * @param
 	 * offset_alvo: o espaco alvo para a nova insercao
@@ -123,5 +125,6 @@
 		fseek(arquivo_registro, -2, SEEK_CUR);
 		fwrite(&tamanho_sobra, sizeof(short), 1, arquivo_registro);
 		fclose(arquivo_registro);
+		if(tamanho_sobra <= 14) RemoveLed(offset_alvo);
 		return(offset_alvo + tamanho_sobra + 1);
 	}
